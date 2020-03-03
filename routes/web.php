@@ -29,4 +29,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'MovieController@index');
 
-
+//Route::get('/todos','Admin\TodosController@index'); 
+//Route::resource('todos','Admin\TodosController');
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+    Route::get('todos/create', 'Admin\TodoController@add');
+    Route::post('todos/create', 'Admin\TodoController@create');
+    Route::get('/todos','Admin\TodoController@index')->middleware('auth');  
+    Route::get('todos/delete', 'Admin\TodoController@delete')->middleware('auth');
+});
