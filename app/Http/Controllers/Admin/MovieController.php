@@ -33,17 +33,17 @@ class MovieController extends Controller
     $movie->fill($form);
     $movie->save();
       
-    return redirect('admin/movie/create');
+    return redirect('admin/movie/');
   }  
   
    public function index(Request $request)
   {
       $cond_title = $request->cond_title;
       if ($cond_title != '') {
-          // 検索されたら検索結果を取得する
+          
           $posts = Movie::where('title', $cond_title)->get();
       } else {
-          // それ以外はすべてのニュースを取得する
+          
           $posts = Movie::all();
       }
       return view('admin.movie.index', ['posts' => $posts, 'cond_title' => $cond_title]);
@@ -51,7 +51,7 @@ class MovieController extends Controller
   
   public function edit(Request $request)
   {
-      // Movie Modelからデータを取得する
+      
       $movie = Movie::find($request->id);
       if (empty($movie)) {
         abort(404);    
@@ -61,11 +61,11 @@ class MovieController extends Controller
 
   public function update(Request $request)
   {
-      // Validationをかける
+      
       $this->validate($request, Movie::$rules);
-      // Movie Modelからデータを取得する
+      
       $movie = Movie::find($request->id);
-      // 送信されてきたフォームデータを格納する
+      
       $movie_form = $request->all();
       if (isset($movie_form['image'])) {
       $path = $request->file('image')->store('public/image');
@@ -77,7 +77,7 @@ class MovieController extends Controller
       }
       unset($movie_form['_token']);
 
-      // 該当するデータを上書きして保存する
+      
       $movie->fill($movie_form)->save();
 
       return redirect('admin/movie');
@@ -85,9 +85,9 @@ class MovieController extends Controller
   
   public function delete(Request $request)
   {
-      // 該当するMovie Modelを取得
+      
       $movie = Movie::find($request->id);
-      // 削除する
+      
       $movie->delete();
       return redirect('admin/movie/');
   }  

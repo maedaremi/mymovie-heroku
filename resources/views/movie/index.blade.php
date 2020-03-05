@@ -4,6 +4,12 @@
     <div class="container">
         <hr color="#c0c0c0">
         <div class="row">
+        　<div class="col-md-4">
+            <a href="/login" role="button" class="btn btn-primary">ログイン</a>
+        　</div>
+        　<div class="col-md-8">
+            <a href="/admin/movie" role="button" class="btn btn-primary">管理画面</a>
+        　</div>
             <div class="posts col-md-8 mx-auto mt-3">
                 @foreach($posts as $post)
                     <div class="post">
@@ -19,11 +25,8 @@
                                     {{ str_limit($post->body, 1500) }}
                                 </div>
                             </div>
-                            <div class="image col-md-6 text-right mt-4">
-                                @if ($post->image_path)
-                                  <video src="{{ asset('storage/image/'.$post->image_path) }}"controls></video>
-                                @endif
-                                <hr color="#c0c0c0">
+                            <div>
+                                <a href="{{ action('MovieController@show', ['id' => $post->id]) }}">動画</a>
                             </div>
                         </div>
                     </div>

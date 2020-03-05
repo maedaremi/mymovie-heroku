@@ -24,6 +24,9 @@
                     </div>
                 </form>
             </div>
+            <div class="col-md-2">
+                <a href="/admin/todos" role="button" class="btn btn-primary">todo一覧</a>
+            </div>
         </div>
         <div class="row">
             <div class="list-movie col-md-12 mx-auto">

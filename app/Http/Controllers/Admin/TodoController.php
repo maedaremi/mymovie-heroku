@@ -29,7 +29,7 @@ class TodoController extends Controller
       $todo->fill($form);
       $todo->save();
 
-      return redirect('admin/todos/create');
+      return redirect('admin/todos');
   }
   
   public function delete(Request $request)

@@ -10,6 +10,9 @@
             <div class="col-md-4">
                 <a href="{{ action('Admin\TodoController@add') }}" role="button" class="btn btn-primary">新規作成</a>
             </div>
+            <div class="col-md-8">
+                <a href="/admin/movie" role="button" class="btn btn-primary">動画管理</a>
+        　  </div>
         </div>
         <div class="row">
             <div class="list-todo col-md-12 mx-auto">
